@@ -1,0 +1,169 @@
+/* 🌍 页面全局设置 */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex; /* 侧边栏 + 地图左右排列 */
+}
+
+/* 📌 左侧固定面板 */
+.sidebar {
+    width: 20%;
+    height: 100vh; /* 占满整个视口高度 */
+    background: #f0f0f0; /* 浅灰色背景 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* 如果内容过多，允许滚动 */
+}
+
+/* 🌍 右侧地图区域 */
+#map {
+    width: 80%;
+    height: 100vh;
+    position: relative;
+}
+
+/* 🎛️ Grade 过滤按钮 */
+.grade-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.grade-filter button {
+    flex: 1;
+    padding: 8px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.grade-filter button:hover {
+    background: #0056b3;
+}
+
+/* 📊 Registration Date 滑块 */
+.slider-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.slider-container input {
+    width: 80%;
+    margin-top: 5px;
+}
+
+/* 🔍 搜索框 */
+.search-container {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    padding: 6px 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-container button:hover {
+    background: #218838;
+}
+
+/* 📋 图例（Legend） */
+#legend {
+    width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+/* 🆘 右上角帮助按钮 */
+#help-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#help-button:hover {
+    background: #0056b3;
+}
+
+/* 📍 右下角定位按钮 */
+#locateMe {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#locateMe:hover {
+    background: #0056b3;
+}
+
+#help-sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px; /* 默认隐藏 */
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    transition: right 0.3s ease-in-out; /* 添加动画 */
+    z-index: 1000;
+  overflow-y: auto;
+}
+
+.mapboxgl-ctrl-top-right {
+    top: 80px !important; /* 往下移动 80px */
+}
+
+body {
+    font-family: 'Spectral', serif;
+}
+
+h2{font-family: "Spectral", serif;
+  font-weight: 800;
+  font-style: italic;}

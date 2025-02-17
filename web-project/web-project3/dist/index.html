@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>web project3</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The National Heritage List for England (NHLE) – Registered Parks and Gardens</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 左侧控制面板 -->
+    <div class="sidebar">
+        <h2>The National Heritage List for England (NHLE) – Registered Parks and Gardens</h2>
+
+        <!-- Grade filter buttons -->
+        <div class="grade-filter">
+            <button data-grade="I">I</button>
+            <button data-grade="II*">II*</button>
+            <button data-grade="II">II</button>
+            <button data-grade="ALL">All</button>
+            <div id="grade-info">Select a grade to see more details.</div>
+        </div>
+
+        <!-- Registration date filter slider -->
+        <div class="slider-container">
+            <label>Registration Date Filter:</label>
+            <input type="range" id="regDateSlider" min="1980" max="2025" step="1">
+            <span id="regYearDisplay">2025</span>
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter name or postcode">
+            <button id="searchButton">Search</button>
+        </div>
+
+        <!-- 自定义图例 -->
+        <div id="legend"></div>
+    </div>
+
+    <!-- 右侧地图 -->
+    <div id="map"></div>
+
+    <!-- 右上角帮助按钮 -->
+    <button id="help-button">❓</button>
+
+    <!-- 右下角定位按钮 -->
+    <button id="locateMe">📍 Show My Location</button>
+
+    <!-- 帮助侧边栏 -->
+    <div id="help-sidebar">
+        <button id="close-help">❌</button>
+        
+        <h3>📍 Project Overview</h3>
+        <p>This WebGIS project visualizes historical gardens and parks...</p>
+        <h3>🛠️ How to Use the Map</h3>
+        <p>
+           <div id="help">
+  
+  <ul>
+    <li><strong>Hover:</strong> Move your mouse over a garden to see its name.</li>
+    <li><strong>Click:</strong> Click a garden to view details in a popup.</li>
+    <li><strong>Filter by Grade:</strong> Use buttons to show only selected grades (I, II*, II).</li>
+    <li><strong>Filter by Date:</strong> Adjust the slider to filter by registration year.</li>
+    <li><strong>Search:</strong> Enter a name or postal code to find specific locations.</li>
+    <li><strong>Legend:</strong> Check the legend to understand grade colors.</li>
+  </ul>
+</div>
+        </p>
+        <h3>📌 Data Source</h3>
+        <p>https://historicengland.org.uk</p>
+    </div>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
