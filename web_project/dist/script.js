@@ -145,7 +145,7 @@ document.getElementById('regDateSlider').addEventListener('input', function () {
     let query = document.getElementById('searchInput').value.trim();
 
     if (!query) {
-        alert("请输入搜索地点");
+        alert("Please enter the search location");
         return;
     }
 
