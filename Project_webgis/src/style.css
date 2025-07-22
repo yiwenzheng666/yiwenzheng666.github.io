@@ -1,0 +1,181 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+#container {
+  display: flex;
+  height: 100vh;
+}
+
+#sidebar {
+  width: 280px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.section-header {
+  cursor: pointer;
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+.section-content {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+#map {
+  flex: 1;
+}
+
+#legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  padding: 10px;
+  font-size: 13px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+
+
+#commute-info {
+  position: absolute;
+  top: 10px;
+  left: 300px;
+  background: white;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 2;
+}
+
+select {
+  width: 90%;
+  padding: 6px;
+  margin-top: 6px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+
+#life-statistics {
+  background: #fff;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+
+/* Box for displaying POI statistics for isochrones */
+.isochrone-stats-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  font-size: 14px;
+  font-weight: normal;
+  max-width: 240px;
+  line-height: 1.5;
+  z-index: 3;
+}
+
+#score-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: normal;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 3;
+  max-width: 250px;
+  line-height: 1.4;
+}
+
+/* Center popup */
+#intro-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px 20px;
+  max-width: 380px;
+  font-size: 14px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+
+/* Pop-up title */
+#intro-box h3 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Pop-up list */
+#intro-box ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+#intro-box li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* Close button */
+#intro-box button {
+  margin-top: 10px;
+  padding: 6px 10px;
+  background: #ccc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#help-button {
+  position: fixed;
+  bottom: 20px;
+  left: 320px;  
+  z-index: 999;
+}
+
+#help-button button {
+  font-size: 14px;
+  padding: 6px 12px;
+  background-color: #0074D9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}

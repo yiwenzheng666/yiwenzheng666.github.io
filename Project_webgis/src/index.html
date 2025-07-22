@@ -1,0 +1,146 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campus Accessibility WebGIS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+</head>
+<body>
+  <div id="container">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <img src="https://raw.githubusercontent.com/yiwenzheng666/campus-poi-data/main/UoG_colour_proc.jpg"
+     alt="University of Glasgow Logo"
+     style="display:inline-block; margin-bottom: 10px; max-height: 30px;"">
+
+      <h2>Campus WebGIS</h2>
+<p style="font-size: 14px; color: #333; margin: 6px 0 10px 0;">
+  This WebGIS explores the accessibility of campus life spaces for mobility-impaired students at the University of Glasgow, focusing on facilities, commute, slope barriers, and 15-minute life circles.
+</p>
+      <div class="section">
+        <div class="section-header" onclick="toggleSection('facilities')">
+          🏢 <strong>Surrounding Facilities</strong>
+        </div>
+       <div class="section-content" id="facilities" style="display: none;">
+  <label>
+    <input type="checkbox" id="toggleSupermarkets" checked />
+    <span style="display:inline-block; width:12px; height:12px; background:blue; border-radius:50%; margin-right:6px; vertical-align:middle;"></span>
+    🛒 Supermarkets
+  </label><br>
+  
+  <label>
+    <input type="checkbox" id="toggleRestaurants" checked />
+    <span style="display:inline-block; width:12px; height:12px; background:orange; border-radius:50%; margin-right:6px; vertical-align:middle;"></span>
+    🍴 Restaurants
+  </label><br>
+
+  <label>
+    <input type="checkbox" id="toggleParks" checked />
+    <span style="display:inline-block; width:12px; height:12px; background:green; margin-right:6px; vertical-align:middle;"></span>
+    🌳 Parks
+  </label><br>
+</div>
+
+        
+      </div>
+
+      <div class="section">
+        <div class="section-header" onclick="toggleSection('slope')">
+          🛤️ <strong>Slope Analysis</strong>
+        </div>
+        <div class="section-content" id="slope" style="display: none;">
+          <label><input type="checkbox" id="toggleRoads"> Road Slope</label><br>
+          <label><input type="checkbox" id="toggleSteps"> Steps</label>
+        </div>
+      </div>
+      
+    <div class="section">
+  <div class="section-header" onclick="toggleSection('commute')">
+    🚌 <strong>Student Residence Commute Analysis</strong>
+  </div>
+  <div class="section-content" id="commute" style="display: none;">
+    <label for="residenceSelect">Select a residence:</label><br>
+    <select id="residenceSelect">
+      <option value="">-- Please choose --</option>
+    </select>
+  </div>
+      
+      <div class="section">
+  <div class="section-header" onclick="toggleSection('lifeCircle')">
+    🕒 <strong>15-Minute Life Circle</strong>
+  </div>
+  <div class="section-content" id="lifeCircle" style="display: none;">
+    <label for="lifeResidenceSelect">Select a residence:</label><br>
+    <select id="lifeResidenceSelect">
+      <option value="">-- Please choose --</option>
+    </select>
+   
+  </div>
+</div>
+      
+<div class="section">
+  <div class="section-header" onclick="toggleSection('scoreModel')">
+    📊 <strong>Accessibility Scoring Model</strong>
+  </div>
+ <div class="section-content" id="scoreModel" style="display: none;">
+    <div id="score-description" style="margin-top: 6px; font-size: 14px;">
+    <strong>Explanation</strong><br><br>
+
+    Each student residence is scored based on four indicators:<br>
+    • 🕒 <strong>Walking commute time</strong> (0.4) <br>
+    • 🛒 <strong>Number of supermarkets</strong> within 15 min (0.25)<br>
+    • 🍴 <strong>Number of restaurants</strong> within 15 min (0.25)<br>
+    • 🌳 <strong>Park area</strong> within 15 min (0.1)<br><br>
+
+    <strong>Normalization method:</strong><br>
+    - Positive indicators: <code>(x - min) / (max - min)</code><br>
+    - Negative indicator: <code>(max - x) / (max - min)</code><br><br>
+
+    Final score is calculated as the weighted sum of all indicators.
+  </div>
+</div>
+<div id="help-button">
+  <button onclick="document.getElementById('intro-box').style.display='block'">❓ </button>
+</div>
+
+</div>
+
+<div id="score-info"></div>
+
+</div>
+
+<!-- Commute time display area -->
+<div id="commute-info"></div>
+
+
+<!-- Information box in the upper left corner -->
+<div id="commute-info"></div>
+
+     <div id="legend"></div>
+    </div>
+
+    <!-- Statistics box for 15-min life circle -->
+<div id="life-statistics" class="isochrone-stats-box"></div>
+
+    <!-- Map -->
+    <div id="map"></div>
+  </div>
+ <!-- Help pop-up -->
+<div id="intro-box" style="display: none;">
+  <h3>About This WebGIS</h3>
+  <p>This WebGIS visualizes the accessibility of campus life spaces for mobility-impaired students at the University of Glasgow. It contains five functional modules:</p>
+  <ul>
+    <li>🏢 <strong>Surrounding Facilities</strong>: View nearby supermarkets, restaurants, and green spaces with wheelchair accessibility information.</li>
+    <li>🛤️ <strong>Slope Analysis</strong>: Identify steep roads and staircases around the campus that may hinder movement.</li>
+    <li>🚌 <strong>Student Residence Commute Analysis</strong>: Compare walking and wheelchair commute times from student residences to the main building.</li>
+    <li>🕒 <strong>15-Minute Life Circle</strong>: Analyze accessible facilities within a 15-minute walking or wheelchair range from each residence.</li>
+    <li>📊 <strong>Accessibility Scoring Model</strong>: Evaluate and rank student residences based on commute time, facility availability, and green space area.</li>
+  </ul>
+  <button onclick="document.getElementById('intro-box').style.display='none'">Close</button>
+</div>
+                
+</body>
+</html>
